@@ -4,13 +4,15 @@ This language was created by Vance Elliott as part of the honors programming lan
 
 #The Basics
 
+Every segment of code is ended by an exclamation point, as a knight is always excited to do a good job. Comments are started using `{`  and ended using  `}`.
+
 ## Variables
 
 When travelling on a perilous journey, one often has to delegate work to squires. Any respected knight knows to give items and tasks to measley servants, allowing one's hands to be unburdened for any battles that may arise. 
 
 ### Declarations
 
-When hiring a squire, there is very little work for the knight to do. The Chivalry language takes it upon itself to seek the local inns and taverns for worthy servants. All the user must do is use the keyword `squire` followed by a name and preceded by a type.
+When hiring a squire, there is very little work for the knight to do. The Chivalry language takes it upon itself to seek the local inns for worthy servants. All the user must do is use the keyword `squire` followed by a name and preceded by a type.
 
 For example: `num squire Jonathan`
 
@@ -49,7 +51,7 @@ There are several ways to modify an item held by a squire:
     For example: smash(2, 3) will output 6 
 
 - word squires
-  1. The command `combine` will also add two strings together
+  1. The command `combine` will also add two words together
   2. The command `seer` will take in two inputs, one word squire and one num squire, selecting the letter at the location dictated by the num squire.
     3. The command `voodoo` will reverse the order of a word. i.e. `voodoo('red')` is equal to `'der'`
 
@@ -65,7 +67,7 @@ To reduce the time spent finding a squire and giving it an object, the Chivalry 
 A squire can also perform tasks, able to take in the items of other squires as parameters
 and coming forth with a result. If you would like to give a squire a function, one must declare it in this specific way:
 `num squire Jonathan do (whatever task you prefer) with (whatever parameters you have)`.
-The types of the task squires are the same as holding squires except for a new typing `ghoul` that allows the function to return void. When writing a parameter, or future squire, put the type of the squire and then a temporary name. i.e. `num jonathan, word ronathan`
+The types of the task squires are the same as holding squires except for a new typing `ghoul` that allows the function to return void. When writing a parameter, or future squire, put the type of the squire and then a temporary name, i.e. `(num jonathan, word ronathan)`
 
 ### Calling forth the squire
 
@@ -132,7 +134,7 @@ There are two TTSO's as well. The first object makes sure that both parameters a
 
 ### Tri-Tip-Beef
 
-These beefs take in three parameters, most likely due to the illuminati's on the farming industry.
+These beefs take in three parameters, most likely due to the illuminati's influence on the farming industry.
 
 There is only one TTB. This TTB takes in three morals, checking to see if two are good. To use this, write `prettygood()`.
 
@@ -142,7 +144,7 @@ While there are many diviner artifacts used to combine/modify a certain morals, 
 
 -`better` sees if a number is greater than another number.
 
--`equal` sees if a number is equal to another number. Also works with strings.
+-`equal` sees if a number is equal to another number. Also works with words.
 
 -`betterequal` sees if a number is greater or equal to another number
 
