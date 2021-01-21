@@ -113,7 +113,7 @@ A knight often has to perform mundane tasks over and over and over and over and 
     - These trolls play tricks on innocent knights, something an honest warrior will not partake in.
     - These pranks range in severity from a program crashing to stealing a squires item.
     - Don't use them.
-    - But if you want to deal in the dark arts, utter this despicable sequence `Mischievous trolls play`.
+    - But if you want to deal in the dark arts, utter this despicable sequence `mischievous trolls play`.
     - Don't use them.
 
 ##Diviner Artifacts
@@ -174,3 +174,48 @@ We at Chivalry have provided many weapons and tools for the knight in our langua
 
 - `holler()` takes in a word and writes it to the screen.
 - `hither()` does the same thing as holler, but writes on a new line.
+
+| keywords/operators | description |
+| ------------------ | ----------- |
+| `!` | marks the end of a line
+| `{}` | allows the knight to comment in between the brackets
+| `squire` | declares a new variable
+| `num` | precedes squire to initialize variable with number typing
+| `word` | precedes squire to initialize variable with word typing
+| `moral` | precedes squire to initialize variable with moral typing (boolean)
+| `calc included` | allows num typing to handle decimals
+| `give()` | gives a squire corresponding to its type
+| `'` | used to signify word typing
+| `combine()` | takes in two inputs and adds them together, works for both word and num
+| `smash()` | takes in two num inputs and subtracts second from first
+| `witchcraft()` | takes in two num inputs and multiplies them together
+| `chop()` | takes in two num inputs and divides first by second.
+| `seer()` | takes in one word input and one num input, finding a specific letter at the num inputs position in the word
+| `voodoo()` | takes in one word input and reverses the order of the letters
+| `hold` | a way to give a value to squire while initializing at the same time
+| `do` | a command preceding a function's code
+| `with` | a command preceding a function's parameters
+| `ghoul` | the typing of a function with nothing retrieved (returned) 
+| `and` | acts as a barrier to distinguish each parameter in a function
+| `retrieve` | this command tells the function to return whatever follows it
+| `divine` | takes in a moral and runs if it is good
+| `good` | this is one of the two values of a moral and happens when a knight is true and just
+| `evil` | this is the second value of a moral and happens when a knight lies and is unjust
+| `villain` | this clause works in conjunction with divine, but runs if the moral is evil
+| `river trolls work for ` __ `food` | this command allows the user to create a loop controlled by the amount of trolls and amount of food
+| `foodleft` | this variable keeps track of the amount food left in the loop
+| `feed mountain troll` | these trolls are fed a moral and create a loop that runs only if that moral stays evil.
+| `mischievous trolls play` | Don't use this command.
+| `switch()` | takes in a moral and switches its value
+| `despair()` | takes in a moral and makes its value evil
+| `holy()` | takes in two morals and checks to see if both are good. If not, outputs evil.
+| `realistic()` | takes in two morals and checks to see if only one of them is good. If not, returns evil.
+| `prettygood()` | takes in three morals and checks to see if two of them are good. If three are good, or less than two are good, this returns evil.
+| `better` | sees if its preceding number is greater than the following number. Outputs moral.
+| `equal` | sees if its preceding number is equal to the following number. Outputs moral.
+| `betterequal` | sees if its preceding number it greater or equal to the following number. Outputs moral.
+| `build tavern ` __ __ `rooms` | build a collection of squires of the same type. First blank is tavern name, second is tavern type.
+| `guest` | allows the knight to add/change the squire of a specific room
+| __ `room` __ | accesses a specific room of a specific tavern. First blank is tavern name, second blank is room number
+| `holler()` | takes in a word and writes it to the screen
+| `hither()` | takes in word and writes it to screen, but writes on same line.
