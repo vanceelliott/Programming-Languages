@@ -150,11 +150,11 @@ While there are many diviner artifacts used to combine/modify a certain morals, 
 
 One could use these tools by saying `2 better 5`.
 
-##Taverns
+## Taverns
 
 While having a squire hold a singe item is great, sometimes a knight needs multiple items to be held in one place. This is where taverns become a knight's best friend. Taverns hold multiple squires, all of the same type, and store them in the same place.
 
-###Building a tavern
+### Building a tavern
 
 In order to create a place for your squires, you must define how many rooms will be needed in the tavern. To do this, write `build tavern tavernathan 6 rooms`. That would store 6 squires.
 
@@ -219,3 +219,4 @@ We at Chivalry have provided many weapons and tools for the knight in our langua
 | __ `room` __ | accesses a specific room of a specific tavern. First blank is tavern name, second blank is room number
 | `holler()` | takes in a word and writes it to the screen
 | `hither()` | takes in word and writes it to screen, but writes on same line.
+
