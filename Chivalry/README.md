@@ -2,7 +2,7 @@
 
 This language was created by Vance Elliott as part of the honors programming languages curriculum at Westminster in the Spring 2021.
 
-##The Basics
+## The Basics
 
 Every segment of code is ended by an exclamation point, as a knight is always excited to do a good job. Comments are started using `{`  and ended using  `}`.
 
