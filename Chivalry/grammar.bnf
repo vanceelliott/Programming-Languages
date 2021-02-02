@@ -1,5 +1,4 @@
 //Vance Elliott, https://github.com/vanceelliott/Programming-Languages/blob/main/Chivalry/grammar.bnf
-//
 
 program ::= statementList?
 
