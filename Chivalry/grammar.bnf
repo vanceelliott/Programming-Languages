@@ -32,7 +32,7 @@ mountainTrolls::= "feed mountain troll" expression "(" block ")"
 
 mischievousTrolls::= "mischievous trolls play"
 
-conditional ::= "divine" expression "(" block ")" | "villain" "(" block ")"
+conditional ::= "divine" recursiveExpression "(" block ")" | "villain" "(" block ")"
 
 parameterList ::= expression | expression "and" parameterList
 
@@ -59,13 +59,19 @@ binary ::= binaryOperator "("expression "and" expression")" | expression compara
 
 tertinary ::= tertOperator "(" expression "and" expression "and" expression ")"
 
+veriatic ::= veriaticOperator "(" recursiveExpression ")"
+
+recursiveExpression ::= expression | expression "and" recursiveExpression
+
 unaryOperator::= "switch" | "despair"
 
-binaryOperator::= "combine" | "smash" | "witchcraft" | "chop" | "seer" | "voodoo" | "holy" | "realistic"
+binaryOperator::= "seer" | "voodoo" | "holy" | "realistic"
 
 comparator::= "better" | "equal" | "betterequal"
 
 tertOperator ::= "prettyGood"
+
+veriaticOperator ::= "combine" | "smash" | "witchcraft" | "chop"
 
 tavernDeclaration ::= "build tavern" IDENTIFIER expression "rooms"
 
