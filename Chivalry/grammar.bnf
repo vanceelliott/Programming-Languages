@@ -1,0 +1,90 @@
+program ::= statementList?
+
+statementList ::= statement statementList?
+
+statement ::= expression end
+            | initialization
+            | declaration
+            | assignment
+            | functionAssignment
+            | functionCall end
+            | loop
+            | conditional
+            | block
+
+initialization ::= type "squire" IDENTIFIER "hold" expression end
+
+declaration ::= type "squire" IDENTIFIER end
+
+assignment::= "give" "(" IDENTIFIER COMMA expression ")" end
+
+functionAssignment ::= type "squire" "do" "(" block ")" "with" "(" parameterList ")" end
+
+functionCall ::=  IDENTIFIER "with" "(" (expression)* ")"
+
+loop ::= riverTrolls | mountainTrolls | mischievousTrolls
+
+riverTrolls::= NUM "river trolls work for" NUM "food" "(" block ")"
+
+mountainTrolls::= "feed mountain troll" IDENTIFIER "(" block ")"
+
+mischievousTrolls::= "mischievous trolls play"
+
+conditional ::= "divine" expression "(" block ")" optVillain
+
+optVillain ::= "villain" "(" block ")" |
+
+parameterList ::=
+
+type ::= NUM
+       | WORD
+       | moral
+       | GHOUL
+
+
+moral ::= GOOD | EVIL
+
+
+expression ::= primary
+            |  unary
+            |  binary
+            | tertinary
+            | comparator
+primary ::=
+unary ::= switch | despair
+
+binary::= holy
+        | realistic
+        | combine
+        | smash
+        | witchcraft
+        | chop
+        | seer
+        | voodoo
+        | better
+        | equal
+        | betterequal
+
+tertinary ::= prettyGood
+
+switch::=
+despair::=
+holy ::= and
+realistic::= or
+combine::= add
+smash::= minus
+witchcraft::= times
+chop::= divide
+seer::= charat
+voodoo::= reverses order of word
+better::= >
+equal::= =
+betterequal::= >=
+prettyGood::=
+
+
+switch ::= "switch" "(" expression ")"
+despair ::= "despair" "(" expression ")"
+
+
+end::= "!"
