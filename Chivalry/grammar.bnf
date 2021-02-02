@@ -1,3 +1,6 @@
+//Vance Elliott, https://github.com/vanceelliott/Programming-Languages/blob/main/Chivalry/grammar.bnf
+//
+
 program ::= statementList?
 
 statementList ::= statement statementList?
@@ -20,71 +23,59 @@ assignment::= "give" "(" IDENTIFIER COMMA expression ")" end
 
 functionAssignment ::= type "squire" "do" "(" block ")" "with" "(" parameterList ")" end
 
-functionCall ::=  IDENTIFIER "with" "(" (expression)* ")"
+functionCall ::=  IDENTIFIER "with" "(" parameterList ")"
 
 loop ::= riverTrolls | mountainTrolls | mischievousTrolls
 
-riverTrolls::= NUM "river trolls work for" NUM "food" "(" block ")"
+riverTrolls::= expression "river trolls work for" expression "food" "(" block ")"
 
-mountainTrolls::= "feed mountain troll" IDENTIFIER "(" block ")"
+mountainTrolls::= "feed mountain troll" expression "(" block ")"
 
 mischievousTrolls::= "mischievous trolls play"
 
-conditional ::= "divine" expression "(" block ")" optVillain
+conditional ::= "divine" expression "(" block ")" | "villain" "(" block ")"
 
-optVillain ::= "villain" "(" block ")" |
+parameterList ::= expression | expression "and" parameterList
 
-parameterList ::=
+block ::= statement | statement block
+
+expression ::= primary
+            |  unary
+            |  binary
+            | tertinary
+            | functionCall
+
+primary ::= type | IDENTIFIER
 
 type ::= NUM
        | WORD
        | moral
        | GHOUL
 
-
 moral ::= GOOD | EVIL
 
+unary ::= unaryOperator "("expression")"
 
-expression ::= primary
-            |  unary
-            |  binary
-            | tertinary
-            | comparator
-primary ::=
-unary ::= switch | despair
+binary ::= binaryOperator "("expression "and" expression")" | expression comparator expression
 
-binary::= holy
-        | realistic
-        | combine
-        | smash
-        | witchcraft
-        | chop
-        | seer
-        | voodoo
-        | better
-        | equal
-        | betterequal
+tertinary ::= tertOperator "(" expression "and" expression "and" expression ")"
 
-tertinary ::= prettyGood
+unaryOperator::= "switch" | "despair"
 
-switch::=
-despair::=
-holy ::= and
-realistic::= or
-combine::= add
-smash::= minus
-witchcraft::= times
-chop::= divide
-seer::= charat
-voodoo::= reverses order of word
-better::= >
-equal::= =
-betterequal::= >=
-prettyGood::=
+binaryOperator::= "combine" | "smash" | "witchcraft" | "chop" | "seer" | "voodoo" | "holy" | "realistic"
 
+comparator::= "better" | "equal" | "betterequal"
 
-switch ::= "switch" "(" expression ")"
-despair ::= "despair" "(" expression ")"
+tertOperator ::= "prettyGood"
+
+tavernDeclaration ::= "build tavern" IDENTIFIER expression "rooms"
+
+tavernAssignment ::= IDENTIFIER "room" expression "guest" expression
+
+tavernCall ::= IDENTIFIER "room" expression
+
+holler::= "holler" "("expression")"
+hither::= "hither" "("expression")"
 
 
 end::= "!"
