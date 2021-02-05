@@ -13,6 +13,10 @@ statement ::= expression end
             | loop
             | conditional
             | block
+            | tavernDeclaration
+            | tavernAssignment
+            | holler
+            | hither
 
 initialization ::= type "squire" IDENTIFIER "hold" expression end
 
@@ -20,29 +24,31 @@ declaration ::= type "squire" IDENTIFIER end
 
 assignment::= "give" "(" IDENTIFIER COMMA expression ")" end
 
-functionAssignment ::= type "squire" "do" "(" block ")" "with" "(" parameterList ")" end
+functionAssignment ::= type "squire" "do" block "with" "(" group ")" end
 
-functionCall ::=  IDENTIFIER "with" "(" parameterList ")"
+functionCall ::=  IDENTIFIER "with" "(" group ")"
 
 loop ::= riverTrolls | mountainTrolls | mischievousTrolls
 
-riverTrolls::= expression "river trolls work for" expression "food" "(" block ")"
+riverTrolls::= expression "river trolls work for" expression "food" block
 
-mountainTrolls::= "feed mountain troll" expression "(" block ")"
+mountainTrolls::= "feed mountain troll" expression block
 
 mischievousTrolls::= "mischievous trolls play"
 
-conditional ::= "divine" recursiveExpression "(" block ")" | "villain" "(" block ")"
+conditional ::= "divine" expression block ("villain" block)?
 
-parameterList ::= expression | expression "and" parameterList
-
-block ::= statement | statement block
+block ::= "(" statementList ")"
 
 expression ::= primary
             |  unary
             |  binary
-            | tertinary
+            | ternary
+            | variadic
             | functionCall
+            | tavernCall
+
+group ::= expression | expression "and" group
 
 primary ::= type | IDENTIFIER
 
@@ -53,25 +59,25 @@ type ::= NUM
 
 moral ::= GOOD | EVIL
 
-unary ::= unaryOperator "("expression")"
+unary ::= unaryOperator "(" group ")"
 
-binary ::= binaryOperator "("expression "and" expression")" | expression comparator expression
+binary ::= binaryOperator "(" group ")" | expression comparator expression
 
-tertinary ::= tertOperator "(" expression "and" expression "and" expression ")"
+ternary ::= ternaryOperator "(" group ")"
 
-veriatic ::= veriaticOperator "(" recursiveExpression ")"
+variadic ::= variadicOperator "(" group ")"
 
-recursiveExpression ::= expression | expression "and" recursiveExpression
+operator ::= unaryOperator | binaryOperator | ternaryOperator | variadicOperator | comparator
 
-unaryOperator::= "switch" | "despair"
+unaryOperator ::= "switch" | "despair"
 
-binaryOperator::= "seer" | "voodoo" | "holy" | "realistic"
+binaryOperator ::= "seer" | "voodoo" | "holy" | "realistic"
 
-comparator::= "better" | "equal" | "betterequal"
+comparator ::= "better" | "equal" | "betterequal"
 
-tertOperator ::= "prettyGood"
+ternaryOperator ::= "prettyGood"
 
-veriaticOperator ::= "combine" | "smash" | "witchcraft" | "chop"
+variadicOperator ::= "combine" | "smash" | "witchcraft" | "chop"
 
 tavernDeclaration ::= "build tavern" IDENTIFIER expression "rooms"
 
@@ -81,6 +87,5 @@ tavernCall ::= IDENTIFIER "room" expression
 
 holler::= "holler" "("expression")"
 hither::= "hither" "("expression")"
-
 
 end::= "!" //I'm going to change this because too many people already have this as their end character
