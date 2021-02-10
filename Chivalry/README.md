@@ -2,6 +2,8 @@
 
 This language was created by Vance Elliott as part of the honors programming languages curriculum at Westminster in the Spring 2021.
 
+link to cross type operations: https://docs.google.com/spreadsheets/d/1KTI1oKJOxwpv2AK6u3tWHgQ6YHcpIi99z-i-86L-PHo/edit#gid=1694587116 
+
 ## The Basics
 
 Every segment of code is ended by an exclamation point, as a knight is always excited to do a good job. Comments are started using `{`  and ended using  `}`.

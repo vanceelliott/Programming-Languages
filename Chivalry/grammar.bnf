@@ -6,15 +6,14 @@ statementList ::= statement statementList?
 
 statement ::= expression end
             | initialization
+            | tavernDeclaration
             | declaration
             | assignment
+            | tavernAssignment
             | functionAssignment
             | functionCall end
             | loop
             | conditional
-            | block
-            | tavernDeclaration
-            | tavernAssignment
             | holler
             | hither
 
@@ -26,7 +25,7 @@ assignment::= "give" "(" IDENTIFIER COMMA expression ")" end
 
 functionAssignment ::= type "squire" "do" block "with" "(" group ")" end
 
-functionCall ::=  IDENTIFIER "with" "(" group ")"
+functionCall ::=  IDENTIFIER "with" group
 
 loop ::= riverTrolls | mountainTrolls | mischievousTrolls
 
@@ -45,12 +44,10 @@ expression ::= primary
             |  binary
             | ternary
             | variadic
-            | functionCall
-            | tavernCall
 
-group ::= expression | expression "and" group
+primary ::= type | IDENTIFIER | functionCall | tavernCall | group
 
-primary ::= type | IDENTIFIER
+group ::= "(" expression ")"
 
 type ::= NUM
        | WORD
@@ -59,15 +56,13 @@ type ::= NUM
 
 moral ::= GOOD | EVIL
 
-unary ::= unaryOperator "(" group ")"
+unary ::= unaryOperator group
 
-binary ::= binaryOperator "(" group ")" | expression comparator expression
+binary ::= binaryOperator group | expression comparator expression
 
-ternary ::= ternaryOperator "(" group ")"
+ternary ::= ternaryOperator group
 
-variadic ::= variadicOperator "(" group ")"
-
-operator ::= unaryOperator | binaryOperator | ternaryOperator | variadicOperator | comparator
+variadic ::= variadicOperator group
 
 unaryOperator ::= "switch" | "despair"
 
@@ -85,7 +80,7 @@ tavernAssignment ::= IDENTIFIER "room" expression "guest" expression
 
 tavernCall ::= IDENTIFIER "room" expression
 
-holler::= "holler" "("expression")"
-hither::= "hither" "("expression")"
+holler::= "holler" group
+hither::= "hither" group
 
 end::= "!" //I'm going to change this because too many people already have this as their end character
