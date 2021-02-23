@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Chivalry/Chivalry.iml" filepath="$PROJECT_DIR$/Chivalry/Chivalry.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Programming-Languages.iml" filepath="$PROJECT_DIR$/.idea/Programming-Languages.iml" />
     </modules>
   </component>
