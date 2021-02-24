@@ -39,11 +39,10 @@ conditional ::= "divine" expression block ("villain" block)?
 
 block ::= "(" statementList ")"
 
-expression ::= primary
-            |  unary
-            |  binary
-            | ternary
-            | variadic
+expression ::= primary (")")?
+            |  COMMA primary (")")?
+            |  operator "(" expression
+            |  primary comparator expression
 
 primary ::= type | IDENTIFIER | functionCall | tavernCall | group
 
@@ -56,13 +55,7 @@ type ::= NUM
 
 moral ::= GOOD | EVIL
 
-unary ::= unaryOperator group
-
-binary ::= binaryOperator group | expression comparator expression
-
-ternary ::= ternaryOperator group
-
-variadic ::= variadicOperator group
+operator ::= unaryOperator | binaryOperator | comparator | ternaryOperator | variadicOperator
 
 unaryOperator ::= "switch" | "despair"
 
