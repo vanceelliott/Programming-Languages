@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cd656a5-67d8-4039-9787-25138f8160d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Chivalry/testInput/scratchFile.chiv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/grammar.bnf" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/grammar.bnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +43,17 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Chivalry" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.elliott.Chivalry" />
+      <module name="Chivalry" />
+      <option name="PROGRAM_PARAMETERS" value="./testInput/scratchFile.chiv" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Chivalry" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
