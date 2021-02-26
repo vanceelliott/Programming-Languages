@@ -7,7 +7,7 @@ public enum TokenType {
 
     //LITERAL
 
-    IDENTIFIER, WORD, NUM, MORAL, GOOD, EVIL, GHOUL,
+    IDENTIFIER, WORD, NUM, NUMWITHCALC, MORAL, GOOD, EVIL, GHOUL,
 
     //Keywords
 

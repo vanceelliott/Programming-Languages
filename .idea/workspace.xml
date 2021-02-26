@@ -4,7 +4,7 @@
     <list default="true" id="0cd656a5-67d8-4039-9787-25138f8160d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
