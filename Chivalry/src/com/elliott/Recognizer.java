@@ -28,13 +28,6 @@ public class Recognizer {
         return lexemes.get(nextLexemeIndex).getType() == type;
     }
 
-    //I could not find a solution to differing from variable declaration, variable initialization
-    //and function definition without this method.
-    private boolean checkThreeFromNow(TokenType type){
-        if(nextLexemeIndex+2 >= lexemes.size()) return false;
-        return lexemes.get(nextLexemeIndex+2).getType() == type;
-    }
-
     private void consume(TokenType expected){
         if(check(expected)) advance();
         else Chivalry.error(currentLexeme, "Expected" + expected + " but found " + currentLexeme);
@@ -115,11 +108,11 @@ public class Recognizer {
     }
 
     private boolean initializationPending(){
-        return (declarationPending() && checkThreeFromNow(HOLD)) || functionDefinitionPending() || tavernDeclarationPending();
+        return check(HOLD) || functionDefinitionPending() || tavernDeclarationPending();
     }
 
     private boolean functionDefinitionPending(){
-        return declarationPending() && checkThreeFromNow(DO);
+        return check(DO);
     }
 
     private boolean tavernDeclarationPending(){
