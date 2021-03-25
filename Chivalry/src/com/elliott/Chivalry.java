@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Chivalry {
     public static void main(String[] args) throws IOException {
-        /*try {
+        try {
             if(singlePathProvided(args)) runFile(args[0]);
             else {
                 System.out.println("Put exactly one file path, you absolute idiot");
@@ -17,15 +17,15 @@ public class Chivalry {
             }
         } catch (IOException exception) {
             throw new IOException(exception.toString());
-        }*/
-        Lexeme keyword = new Lexeme(TokenType.CHOP, 21);
+        }
+        /*Lexeme keyword = new Lexeme(TokenType.CHOP, 21);
         Lexeme identifier = new Lexeme(TokenType.IDENTIFIER, "hello", 22);
         Lexeme integernum = new Lexeme(TokenType.NUM, 2, 23);
         Lexeme doublenum = new Lexeme(TokenType.NUMWITHCALC, 3.5, 24);
         System.out.println(keyword);
         System.out.println(identifier);
         System.out.println(integernum);
-        System.out.println(doublenum);
+        System.out.println(doublenum);*/
     }
     public static void runFile(String path) throws IOException {
         String sourceCode = getSourceCodeFromFile(path);
@@ -47,5 +47,17 @@ public class Chivalry {
     private static String getSourceCodeFromFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         return new String(bytes, Charset.defaultCharset());
+    }
+    public static void error(int lineNumber, String errorMessage){
+        System.out.println("Error on " + lineNumber + ". " + errorMessage);
+        System.exit(0);
+    }
+    public static void error(Lexeme lexeme, String errorMessage){
+        if(lexeme.getType()==TokenType.EOF)
+            report(lexeme.getLineNumber(), "at end of file", errorMessage);
+        else report(lexeme.getLineNumber(), "at '" + lexeme + "'", errorMessage);
+    }
+    public static void report(int lineNumber, String where, String message){
+        System.err.println("[line " + lineNumber + "] Error " + where + ": " + message);
     }
 }
