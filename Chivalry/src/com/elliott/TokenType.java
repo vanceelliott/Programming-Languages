@@ -3,7 +3,7 @@ package com.elliott;
 public enum TokenType {
     //Single Character Tokens
 
-    O_PAREN, C_PAREN, O_SQUARE, C_SQUARE, BANG, 
+    O_PAREN, C_PAREN, O_SQUARE, C_SQUARE, BANG, COMMA, 
 
     //LITERAL
 

@@ -117,6 +117,7 @@ public class Recognizer {
     }
 
     private void variadic(){
+        if(debug) System.out.println("-- variadic --");
         if(binaryOperatorPending()) binaryOperator();
         if(ternaryOperatorPending()) ternaryOperator();
         if(variadicOperatorPending()) variadicOperator();
@@ -126,6 +127,7 @@ public class Recognizer {
     }
 
     private void binaryOperator(){
+        if(debug) System.out.println("-- binaryOperator --");
         if(check(SEER)) consume(SEER);
         if(check(VOODOO)) consume(VOODOO);
         if(check(HOLY)) consume(HOLY);
@@ -133,10 +135,12 @@ public class Recognizer {
     }
 
     private void ternaryOperator(){
+        if(debug) System.out.println("-- ternaryOperator --");
         consume(PRETTY_GOOD);
     }
 
     private void variadicOperator(){
+        if(debug) System.out.println("-- variadicOperator --");
         if(check(COMBINE)) consume(COMBINE);
         if(check(SMASH)) consume(SMASH);
         if(check(WITCHCRAFT)) consume(WITCHCRAFT);
@@ -144,6 +148,7 @@ public class Recognizer {
     }
 
     private void primaryList(){
+        if(debug) System.out.println("-- primaryList --");
         primary();
         if(check(COMMA)){
             consume(COMMA);
@@ -152,12 +157,14 @@ public class Recognizer {
     }
 
     private void comparator(){
+        if(debug) System.out.println("-- comparator --");
         if(check(BETTER)) consume(BETTER);
         if(check(EQUAL)) consume(EQUAL);
         if(check(BETTER_EQUAL)) consume(BETTER_EQUAL);
     }
 
     private void functionCall(){
+        if(debug) System.out.println("-- functionCall --");
         consume(IDENTIFIER);
         consume(WITH);
         consume(O_PAREN);
@@ -166,6 +173,7 @@ public class Recognizer {
     }
 
     private void initialization(){
+        if(debug) System.out.println("-- initialization --");
         if(check(HOLD)) {
             consume(HOLD);
             type();
@@ -180,6 +188,7 @@ public class Recognizer {
     }
 
     private void functionDefinition(){
+        if(debug) System.out.println("-- functionDefinition --");
         consume(DO);
         type();
         consume(SQUIRE);
@@ -193,12 +202,14 @@ public class Recognizer {
     }
 
     private void block(){
+        if(debug) System.out.println("-- block --");
         consume(O_SQUARE);
         statementList();
         consume(C_SQUARE);
     }
 
     private void parameterList(){
+        if(debug) System.out.println("-- primaryList --");
         parameter();
         if(check(COMMA)){
             consume(COMMA);
@@ -207,11 +218,13 @@ public class Recognizer {
     }
 
     private void parameter(){
+        if(debug) System.out.println("-- parameter --");
         type();
         consume(IDENTIFIER);
     }
 
     private void tavernDeclaration(){
+        if(debug) System.out.println("-- tavernDeclaration --");
         consume(BUILD);
         consume(TAVERN);
         consume(IDENTIFIER);
@@ -220,13 +233,32 @@ public class Recognizer {
     }
 
     private void declaration(){
+        if(debug) System.out.println("-- declaration --");
         type();
         consume(SQUIRE);
         consume(IDENTIFIER);
         consume(BANG);
     }
 
-    private void assignment
+    private void assignment(){
+        if(debug) System.out.println("-- assignment --");
+        if(check(GIVE)){
+            consume(GIVE);
+            consume(IDENTIFIER);
+            group();
+            consume(BANG);
+        }
+        if(tavernAssignmentPending()) tavernAssignment();
+    }
+
+    private void tavernAssignment(){
+        if(debug) System.out.println("-- tavernAssignment --");
+        consume(IDENTIFIER);
+        consume(ROOM);
+        primary();
+        consume(GUEST);
+        expression();
+    }
     // ----------- Pending Methods -----------
 
     private boolean statementListPending() {

@@ -119,6 +119,8 @@ public class Lexer {
                 return new Lexeme(C_SQUARE, lineNumber);
             case '!':
                 return new Lexeme(BANG, lineNumber);
+            case ',':
+                return new Lexeme(COMMA, lineNumber);
             case '"':
                 return lexString();
             default:
