@@ -12,7 +12,7 @@ statement ::= expression end
             | loop
             | conditional
 
-initialization ::= type "squire" IDENTIFIER "hold" expression end
+initialization ::= "hold" type "squire" IDENTIFIER expression end
                 | functionDefinition
                 | tavernDeclaration
 
@@ -21,7 +21,7 @@ declaration ::= type "squire" IDENTIFIER end
 assignment::= "give" IDENTIFIER group end
             | tavernAssignment
 
-functionDefinition ::= type "squire" IDENTIFIER "do" block "with" "(" parameterList ")" end
+functionDefinition ::= "do" type "squire" IDENTIFIER block "with" "(" parameterList ")" end
 
 functionCall ::=  IDENTIFIER "with" "(" primaryList ")"
 
@@ -80,6 +80,6 @@ tavernDeclaration ::= "build" "tavern" IDENTIFIER primary "rooms"
 
 tavernAssignment ::= IDENTIFIER "room" primary "guest" expression
 
-tavernCall ::= IDENTIFIER "room number" expression
+tavernCall ::= IDENTIFIER "room" "number" expression
 
 end::= "!" //I'm going to change this because too many people already have this as their end character

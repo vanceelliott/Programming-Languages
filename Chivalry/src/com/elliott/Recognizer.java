@@ -39,6 +39,25 @@ public class Recognizer {
     }
     // ----------- Consumption Methods -------
 
+    public void program(){
+        if(debug) System.out.println("-- program --");
+        if(statementListPending()) statementList();
+    }
+
+    private void statementList(){
+        if(debug) System.out.println("-- statementList --");
+        statement();
+        if(statementListPending()) statementList();
+    }
+
+    private void statement(){
+        if(debug) System.out.println("-- statement --");
+        if(expressionPending()) expressionStatement();
+        if(initializationPending()) initialization();
+        if(declarationPending()) declaration();
+        if(assignmentPending()) assignment();
+    }
+
     // ----------- Pending Methods -----------
 
     private boolean statementListPending() {
