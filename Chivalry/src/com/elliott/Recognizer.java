@@ -52,12 +52,181 @@ public class Recognizer {
 
     private void statement(){
         if(debug) System.out.println("-- statement --");
-        if(expressionPending()) expressionStatement();
+        if(expressionPending()) expression();
         if(initializationPending()) initialization();
         if(declarationPending()) declaration();
         if(assignmentPending()) assignment();
     }
 
+    private void expression(){
+        if(debug) System.out.println("-- expression --");
+        if(primaryPending()) primary();
+        if(unaryPending()) unary();
+        if(variadicPending()) variadic();
+        if(comparatorPending()) comparator();
+        if(functionCallPending()) functionCall();
+    }
+
+    private void primary(){
+        if(debug) System.out.println("-- primary --");
+        if(typePending()) type();
+        if(tavernCallPending()) tavernCall();
+        if(groupPending()) group();
+        if(check(IDENTIFIER)) consume(IDENTIFIER);
+    }
+
+    private void type(){
+        if(debug) System.out.println("-- type --");
+        if(check(NUM)) consume(NUM);
+        if(check(WORD)) consume(WORD);
+        if(moralLiteralPending()) moralLiteral();
+    }
+
+    private void moralLiteral(){
+        if(debug) System.out.println("-- moralLiteral --");
+        if(check(GOOD)) consume(GOOD);
+        if(check(EVIL)) consume(EVIL);
+    }
+
+    private void tavernCall(){
+        if(debug) System.out.println("-- tavernCall --");
+        consume(IDENTIFIER);
+        consume(ROOM_NUMBER);
+        expression();
+    }
+
+    private void group(){
+        if(debug) System.out.println("-- group --");
+        consume(O_PAREN);
+        expression();
+        consume(C_PAREN);
+    }
+
+    private void unary(){
+        if(debug) System.out.println("-- unary --");
+        unaryOperator();
+        consume(O_PAREN);
+        primary();
+        consume(C_PAREN);
+    }
+
+    private void unaryOperator() {
+        if(debug) System.out.println("-- unaryOperator --");
+        if(check(SWITCH)) consume(SWITCH);
+        if(check(DESPAIR)) consume(DESPAIR);
+    }
+
+    private void variadic(){
+        if(binaryOperatorPending()) binaryOperator();
+        if(ternaryOperatorPending()) ternaryOperator();
+        if(variadicOperatorPending()) variadicOperator();
+        consume(O_PAREN);
+        primaryList();
+        consume(C_PAREN);
+    }
+
+    private void binaryOperator(){
+        if(check(SEER)) consume(SEER);
+        if(check(VOODOO)) consume(VOODOO);
+        if(check(HOLY)) consume(HOLY);
+        if(check(REALISTIC)) consume(REALISTIC);
+    }
+
+    private void ternaryOperator(){
+        consume(PRETTY_GOOD);
+    }
+
+    private void variadicOperator(){
+        if(check(COMBINE)) consume(COMBINE);
+        if(check(SMASH)) consume(SMASH);
+        if(check(WITCHCRAFT)) consume(WITCHCRAFT);
+        if(check(CHOP)) consume(CHOP);
+    }
+
+    private void primaryList(){
+        primary();
+        if(check(COMMA)){
+            consume(COMMA);
+            primaryList();
+        }
+    }
+
+    private void comparator(){
+        if(check(BETTER)) consume(BETTER);
+        if(check(EQUAL)) consume(EQUAL);
+        if(check(BETTER_EQUAL)) consume(BETTER_EQUAL);
+    }
+
+    private void functionCall(){
+        consume(IDENTIFIER);
+        consume(WITH);
+        consume(O_PAREN);
+        primaryList();
+        consume(C_PAREN);
+    }
+
+    private void initialization(){
+        if(check(HOLD)) {
+            consume(HOLD);
+            type();
+            consume(SQUIRE);
+            consume(IDENTIFIER);
+            expression();
+            consume(BANG);
+
+        }
+        if(functionDefinitionPending()) functionDefinition();
+        if(tavernDeclarationPending()) tavernDeclaration();
+    }
+
+    private void functionDefinition(){
+        consume(DO);
+        type();
+        consume(SQUIRE);
+        consume(IDENTIFIER);
+        block();
+        consume(WITH);
+        consume(O_PAREN);
+        parameterList();
+        consume(C_PAREN);
+        consume(BANG);
+    }
+
+    private void block(){
+        consume(O_SQUARE);
+        statementList();
+        consume(C_SQUARE);
+    }
+
+    private void parameterList(){
+        parameter();
+        if(check(COMMA)){
+            consume(COMMA);
+            parameterList();
+        }
+    }
+
+    private void parameter(){
+        type();
+        consume(IDENTIFIER);
+    }
+
+    private void tavernDeclaration(){
+        consume(BUILD);
+        consume(TAVERN);
+        consume(IDENTIFIER);
+        primary();
+        consume(ROOMS);
+    }
+
+    private void declaration(){
+        type();
+        consume(SQUIRE);
+        consume(IDENTIFIER);
+        consume(BANG);
+    }
+
+    private void assignment
     // ----------- Pending Methods -----------
 
     private boolean statementListPending() {
@@ -123,7 +292,7 @@ public class Recognizer {
     }
 
     private boolean functionCallPending(){
-        return check(IDENTIFIER) && check(WITH);
+        return check(IDENTIFIER) && checkNext(WITH);
     }
 
     private boolean initializationPending(){
@@ -147,7 +316,7 @@ public class Recognizer {
     }
 
     private boolean tavernAssignmentPending(){
-        return check(IDENTIFIER) && check(ROOM);
+        return check(IDENTIFIER) && checkNext(ROOM);
     }
 
     private boolean loopPending(){
