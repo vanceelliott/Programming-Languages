@@ -2,6 +2,7 @@ package com.elliott;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import static com.elliott.TokenType.*;
 
 public class Lexer {
@@ -11,6 +12,7 @@ public class Lexer {
     private int startOfCurrentLexeme = 0;
     private int lineNumber = 1;
     private static final HashMap<String, TokenType> keywords;
+
     static {
         keywords = new HashMap<>();
         keywords.put("holler", HOLLER);
@@ -57,50 +59,70 @@ public class Lexer {
         keywords.put("good", GOOD);
         keywords.put("evil", EVIL);
         keywords.put("ghoul", GHOUL);
-        keywords.put("room number", ROOM_NUMBER);
+        keywords.put("room_number", ROOM_NUMBER);
+        keywords.put("num", NUM);
+        keywords.put("word", WORD);
+        keywords.put("num_with_calc", NUM_WITH_CALC);
     }
-    public Lexer(String source){
+
+    public Lexer(String source) {
         this.source = source;
     }
+
     private char peek() {
-        if(isAtEnd()) return '\0';
+        if (isAtEnd()) return '\0';
         return source.charAt(currentPosition);
     }
+
     private char peekNext() {
-        if(currentPosition + 1 >= source.length()) return '\0';
-        return source.charAt(currentPosition+1);
+        if (currentPosition + 1 >= source.length()) return '\0';
+        return source.charAt(currentPosition + 1);
     }
+
     private boolean match(char expected) {
-        if(isAtEnd() || source.charAt(currentPosition) != expected) return false;
+        if (isAtEnd() || source.charAt(currentPosition) != expected) return false;
         currentPosition++;
         return true;
     }
-    private char advance(){
+
+    private char advance() {
         char currentChar = source.charAt(currentPosition);
-        if(currentChar == '\n' || currentChar == '\r') lineNumber++;
+        if (currentChar == '\n' || currentChar == '\r') lineNumber++;
         currentPosition++;
         return currentChar;
     }
-    private boolean isAtEnd() {return currentPosition >= source.length();}
-    private boolean isDigit(char c) { return c >= '0' && c <= '9';}
+
+    private boolean isAtEnd() {
+        return currentPosition >= source.length();
+    }
+
+    private boolean isDigit(char c) {
+        return c >= '0' && c <= '9';
+    }
+
     private boolean isAlpha(char c) {
         return (c >= 'a' && c <= 'z') ||
                 (c >= 'A' && c <= 'Z') ||
                 c == '_';
     }
-    private boolean isAlphaNumeric(char c) {return isAlpha(c)||isDigit(c);}
+
+    private boolean isAlphaNumeric(char c) {
+        return isAlpha(c) || isDigit(c);
+    }
+
     public ArrayList<Lexeme> lex() {
-        while(!isAtEnd()) {
+        while (!isAtEnd()) {
             startOfCurrentLexeme = currentPosition;
             Lexeme nextLexeme = getNextLexeme();
-            if(nextLexeme != null) lexemes.add(nextLexeme);
+            if (nextLexeme != null) lexemes.add(nextLexeme);
         }
         lexemes.add(new Lexeme(EOF, lineNumber));
         return lexemes;
     }
+
     private Lexeme getNextLexeme() {
         char c = advance();
-        switch(c) {
+        switch (c) {
             //Whitespace
             case ' ':
             case '\t':
@@ -124,50 +146,53 @@ public class Lexer {
             case '"':
                 return lexString();
             default:
-                if(isDigit(c)) return lexNumber();
+                if (isDigit(c)) return lexNumber();
                 else if (isAlpha(c)) return lexIdentifierOrKeyword();
                 else Chivalry.error(lineNumber, "Unexpected character: " + c);
                 return null;
         }
     }
+
     private Lexeme lexNumber() {
         boolean isInteger = true;
         while (isDigit(peek())) advance();
-        if(peek() == '.') {
-            if(!isDigit(peekNext())) Chivalry.error(lineNumber, "Number ends in decimal point");
+        if (peek() == '.') {
+            if (!isDigit(peekNext())) Chivalry.error(lineNumber, "Number ends in decimal point");
             isInteger = false;
             advance();
             while (isDigit(peek())) advance();
         }
         String numberString = source.substring(startOfCurrentLexeme, currentPosition);
-        if(isInteger){
+        if (isInteger) {
             int number = Integer.parseInt(numberString);
             return new Lexeme(NUM, number, lineNumber);
         } else {
             double number = Double.parseDouble(numberString);
-            return new Lexeme(NUMWITHCALC, number, lineNumber);
+            return new Lexeme(NUM_WITH_CALC, number, lineNumber);
         }
     }
+
     private Lexeme lexString() {
         boolean check = true;
         int currentLine = lineNumber;
         while (check) {
-            if(peek()=='"'){
+            if (peek() == '"') {
                 check = false;
             }
-            if(currentPosition==source.length()){
+            if (currentPosition == source.length()) {
                 Chivalry.error(currentLine, "Word does not have closed quotation mark");
             }
             advance();
         }
-        String stringString = source.substring(startOfCurrentLexeme+1, currentPosition-1);
+        String stringString = source.substring(startOfCurrentLexeme + 1, currentPosition - 1);
         return new Lexeme(WORD, stringString, lineNumber);
     }
+
     private Lexeme lexIdentifierOrKeyword() {
-        while(isAlphaNumeric(peek())) advance();
+        while (isAlphaNumeric(peek())) advance();
         String text = source.substring(startOfCurrentLexeme, currentPosition);
         TokenType type = keywords.get(text);
-        if(type==null)
+        if (type == null)
             return new Lexeme(IDENTIFIER, text, lineNumber);
         else
             return new Lexeme(type, lineNumber);

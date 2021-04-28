@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cd656a5-67d8-4039-9787-25138f8160d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Environment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Evaluator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Parser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/environmentClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/grammar.bnf" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/grammar.bnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Recognizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/testInput/scratchFile.chiv" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/testInput/scratchFile.chiv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +52,9 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Chivalry">
     <configuration name="Chivalry" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.elliott.Chivalry" />
       <module name="Chivalry" />
@@ -51,6 +64,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="environmentClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.elliott.environmentClass" />
+      <module name="Chivalry" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.elliott.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.environmentClass" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
