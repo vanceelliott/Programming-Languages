@@ -351,9 +351,12 @@ public class Parser {
             Lexeme type = type();
             initialization.setLeft(type);
             consume(SQUIRE);
-            consume(IDENTIFIER);
+            Lexeme identifier = consume(IDENTIFIER);
             Lexeme expression = expression();
-            initialization.setRight(expression);
+            Lexeme glue = new Lexeme(GLUE, currentLexeme.getLineNumber());
+            initialization.setRight(glue);
+            glue.setLeft(identifier);
+            glue.setRight(expression);
             consume(BANG);
 
         } else if (functionDefinitionPending()) {
@@ -451,10 +454,13 @@ public class Parser {
         Lexeme assignment;
         if (check(GIVE)) {
             assignment = consume(GIVE);
+            consume(O_PAREN);
             Lexeme identifier = consume(IDENTIFIER);
+            consume(COMMA);
             assignment.setLeft(identifier);
             Lexeme primary = primary();
             assignment.setRight(primary);
+            consume(C_PAREN);
             consume(BANG);
         } else {
             assignment = new Lexeme(ASSIGNMENT, currentLexeme.getLineNumber());

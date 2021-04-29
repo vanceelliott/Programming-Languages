@@ -1,4 +1,7 @@
-1 river trolls work for 2 food
+num squire jonathan!
+give(jonathan, 4)!
+feed mountain troll (jonathan better 8)
 [
-   combine(5, 5)!
+    give(jonathan, (combine(jonathan, 1)))!
 ]
+

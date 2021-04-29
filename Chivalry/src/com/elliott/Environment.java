@@ -66,4 +66,23 @@ public class Environment {
         }
         return "";
     }
+
+    public Lexeme killSquire() {
+        int index = (int) (Math.random() * identifiers.size());
+        if (index == identifiers.size()) {
+            index = 0;
+        }
+        Lexeme returnVal = identifiers.get(index);
+        identifiers.remove(index);
+        values.remove(index);
+        return returnVal;
+    }
+
+    public boolean checkIdents() {
+        if (identifiers.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cd656a5-67d8-4039-9787-25138f8160d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Environment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Evaluator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Parser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/environmentClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/grammar.bnf" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/grammar.bnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Chivalry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexeme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Recognizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chivalry/src/com/elliott/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/src/com/elliott/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chivalry/testInput/scratchFile.chiv" beforeDir="false" afterPath="$PROJECT_DIR$/Chivalry/testInput/scratchFile.chiv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

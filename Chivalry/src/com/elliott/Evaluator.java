@@ -16,19 +16,26 @@ public class Evaluator {
                 return evalStatementList(tree, environment);
             case STATEMENT:
                 return evalStatement(tree, environment);
-            case INITIALIZATION:
+            case HOLD:
                 return evalInitialization(tree, environment);
+            case INITIALIZATION:
+                return evalFuncInitialization(tree, environment);
             case FUNCTION_CALL:
                 return evalFunctionCall(tree, environment);
+            case DECLARATION:
+                return evalDeclaration(tree, environment);
             case DO:
                 return evalFunctionDefinition(tree, environment);
+            case GIVE:
+                return evalAssignment(tree, environment);
             case O_SQUARE:
                 return evalBlock(tree, environment);
             case RIVER_TROLLS:
             case FEED:
             case MISCHIEVOUS:
                 return evalLoop(tree, environment);
-            //self-evaluating types
+            case DIVINE:
+                //self-evaluating types
             case NUM:
             case NUM_WITH_CALC:
             case WORD:
@@ -68,15 +75,38 @@ public class Evaluator {
         return eval(statement.getLeft(), environment);
     }
 
-    private Lexeme evalInitialization(Lexeme initialization, Environment environment) {
-        if (debug) System.out.println("Evaluating initialization...");
+    private Lexeme evalFuncInitialization(Lexeme initialization, Environment environment) {
+        if (debug) System.out.println("Evaluating funcInitialization...");
         return eval(initialization.getLeft(), environment);
     }
 
+    private Lexeme evalInitialization(Lexeme initialization, Environment environment) {
+        if (debug) System.out.println("Evaluating initialization...");
+        environment.insert(initialization.getRight().getLeft(), evalExpression(initialization.getRight().getRight(), environment));
+        return null;
+    }
+
+    private Lexeme evalDeclaration(Lexeme declaration, Environment environment) {
+        if (debug) System.out.println("Evaluating declaration...");
+        environment.insert(declaration.getRight(), null);
+        return null;
+    }
+
+    private Lexeme evalAssignment(Lexeme assignment, Environment environment) {
+        if (debug) System.out.println("Evaluating assignment...");
+        environment.update(assignment.getLeft(), evalPrimary(assignment.getRight(), environment));
+        return null;
+    }
+
     private Lexeme evalLoop(Lexeme loop, Environment environment) {
+        if (debug) System.out.println("Evaluating loop...");
         switch (loop.getType()) {
             case RIVER_TROLLS:
                 return evalRiverTrolls(loop, environment);
+            case FEED:
+                return evalMountainTrolls(loop, environment);
+            case MISCHIEVOUS:
+                return evalMischievousTrolls(environment);
             default:
                 return null;
         }
@@ -95,8 +125,33 @@ public class Evaluator {
                 newEnvironment.update(foodLeft, newVal);
                 returnVal = eval(loop.getRight().getRight(), newEnvironment);
             }
+        } else if (loop.getLeft().getType() == NUM_WITH_CALC) {
+            for (double foodLeftNum = loop.getRight().getLeft().getDoubleValue(); foodLeftNum > 0; foodLeftNum -= loop.getLeft().getDoubleValue()) {
+                Lexeme newVal = new Lexeme(NUM_WITH_CALC, foodLeftNum, loop.getRight().getRight().getLineNumber());
+                newEnvironment.update(foodLeft, newVal);
+                returnVal = eval(loop.getRight().getRight(), newEnvironment);
+            }
+        } else {
+            Chivalry.error(loop.getLeft(), "Incorrect type. " + loop.getLeft().getType() + " is not a num or num_with_calc");
+            returnVal = null;
         }
         return returnVal;
+    }
+
+    private Lexeme evalMountainTrolls(Lexeme loop, Environment environment) {
+        if (debug) System.out.println("Evaluating mountain trolls...");
+        Environment newEnvironment = new Environment(environment);
+        Lexeme returnVal = null;
+        while (evalPrimary(loop.getLeft(), environment).getStringValue() == "evil") {
+            returnVal = eval(loop.getRight(), newEnvironment);
+        }
+        return returnVal;
+    }
+
+    private Lexeme evalMischievousTrolls(Environment environment) {
+        if (debug) System.out.println("Evaluating initialization...");
+        Chivalry.mischievous(environment);
+        return null;
     }
 
     private Lexeme evalBlock(Lexeme block, Environment environment) {
